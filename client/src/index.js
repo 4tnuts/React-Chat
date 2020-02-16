@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import Counter from'./components/counter';
-import registerServiceWorker from './registerServiceWorker';
+import ChatBox from'./components/ChatBox';
+import * as serviceWorker from './serviceWorker';
 
- ReactDOM.render(<Counter />, document.getElementById("root"));
- registerServiceWorker();
+ ReactDOM.render(<ChatBox />, document.getElementById("root"));
+ serviceWorker.unregister();
