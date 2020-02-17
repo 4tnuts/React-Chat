@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import ReactMarkdown from "react-markdown";
 
-function MessageBox(props) {
-  let { name, message } = props.chatData;
+let MessageBox = props => {
   return (
-    <div className="col-2 rounded-pill">
-      <div className="shadow bg-light border border-primary">
-        <span className="badge-primary">{name}</span>
-        <p>{message}</p>
+    <li style={{width: '100%'}}>
+      <div className="msj macro">
+        <div className="avatar">
+          <small>Rama</small>
+          <img className="img-circle" style={{width:'100%'}} alt="" src="https://i.ytimg.com/vi/bkTX1jweBTA/maxresdefault.jpg" />
+        </div>
+        <div class="text text-l">
+          <p> AKU SUKA KAMUsdasdadoadkoadkoadkoaskdoakdoadkaokaosdkaodkaodkodkoakdoakd kod kasodkasodkaok oakd oaskdaoskd  </p>
+          <p>
+            <small>date</small>
+          </p>
+        </div>
       </div>
-    </div>
+    </li>
   );
-}
+};
 
 export default MessageBox;
