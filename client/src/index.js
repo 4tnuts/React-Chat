@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.css';
-import ChatBox from'./components/ChatBox';
+import ChatBox from'./components/chatBox';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 

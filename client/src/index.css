@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -18,14 +19,14 @@ code {
 
 body {
   background-color: #edeff2;
-  font-family: "Calibri", "Roboto", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .chat_window {
   position: absolute;
   width: calc(100% - 20px);
   max-width: 800px;
-  height: 500px;
+  height: 600px;
   border-radius: 10px;
   background-color: #fff;
   left: 50%;
@@ -65,7 +66,7 @@ body {
 }
 .top_menu .title {
   text-align: center;
-  color: #bcbdc0;
+  color: grey;
   font-size: 20px;
 }
 
@@ -74,7 +75,7 @@ body {
   list-style: none;
   padding: 20px 10px 0 10px;
   margin: 0;
-  height: 347px;
+  height: 300px;
   overflow: scroll;
 }
 .messages .message {
@@ -85,7 +86,6 @@ body {
   opacity: 0;
 }
 .messages .message.left .avatar {
-  background-color: #f5886e;
   float: left;
 }
 .messages .message.left .text_wrapper {
@@ -150,7 +150,12 @@ body {
   margin-top: -2px;
 }
 .messages .message .text_wrapper .text {
-  font-size: 18px;
+  font-size: 10px;
+  font-weight: 300;
+}
+
+.messages .message .text_wrapper .nameTitle{
+  font-size: 14px;
   font-weight: 300;
 }
 
@@ -202,6 +207,20 @@ body {
   font-weight: 300;
   display: inline-block;
   line-height: 48px;
+}
+
+.bottom_wrapper .reference .by {
+  font-size: 12px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
+}
+.bottom_wrapper .reference .by-2 {
+  font-size: 12px;
+  font-weight: 300;
+  display: inline-block;
+  line-height: 48px;
+  margin-top: -100px;
 }
 
 .message_template {
