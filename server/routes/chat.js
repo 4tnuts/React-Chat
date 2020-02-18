@@ -4,8 +4,9 @@ module.exports = (db, ObjectId) => {
     const collection = db.collection('chat');
     router.get('/', (req, res, next) => {
         collection.find().toArray((err, chats) => {
+            console.log(chats)
             if(err) throw err;
-            res.status(302).json(chats);
+            res.status(200).json(chats);
         })
     })
 
