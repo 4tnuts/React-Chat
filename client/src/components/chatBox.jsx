@@ -5,12 +5,12 @@ import axios from "axios";
 import io from "socket.io-client";
 
 const request = axios.create({
-  baseURL: "http://localhost:4000/api/",
+  baseURL: "http://192.168.1.17:4000/api/",
   timeout: 1000,
   headers: { "X-Custom-Header": "foobar" }
 });
 
-const socket = io("http://localhost:4000");
+const socket = io("http://192.168.1.17:4000");
 
 class ChatBox extends Component {
   constructor(props) {
@@ -64,7 +64,9 @@ class ChatBox extends Component {
     }));
     request
       .delete(`chats/${id}`)
-      .then(response => {})
+      .then(response => {
+        socket.emit('deleteChat', null);
+      })
       .catch(err => {
         console.log(err);
       });

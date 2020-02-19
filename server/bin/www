@@ -25,8 +25,12 @@ var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
   console.log('connected');
+
   socket.on('sendChat', data => {
-    console.log("masuk emmit");
+    socket.broadcast.emit('loadChat', null);
+  })
+
+  socket.on('deleteChat', data => {
     socket.broadcast.emit('loadChat', null);
   })
   
