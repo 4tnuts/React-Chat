@@ -27,7 +27,6 @@ class ChatForm extends Component {
   }
 
   render() {
-    {console.log(this.state.chats)}
     return (
       <div className="bottom_wrapper clearfix">
         <form action="" onSubmit={this.handleSubmit}>

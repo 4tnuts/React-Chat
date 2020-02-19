@@ -14,52 +14,57 @@ class ChatBox extends Component {
     super(props);
     this.state = { chats: [] };
     this.sendChat = this.sendChat.bind(this);
+    this.loadChat = this.loadChat.bind(this);
     this.deleteChat = this.deleteChat.bind(this);
   }
 
   componentDidMount() {
+    this.loadChat();
+  }
+
+  loadChat() {
     request
       .get("chats")
       .then(response => {
+        console.log("INI RESPONSE LOAD CHAT CHATBOX",response.data)
         this.setState({
           chats: response.data
         });
+        console.log("INI ISI YANG ADA DI STATE",this.state.chats);
       })
       .catch(err => {
         console.log("error : ", err);
       });
   }
-
   sendChat(dataChat) {
     this.setState(prevState => ({
       chats: [...prevState.chats, dataChat]
     }));
     request
       .post("chats", {
-        id : dataChat._id,
-        name : dataChat.name,
-        message : dataChat.message
+        id: dataChat._id,
+        name: dataChat.name,
+        message: dataChat.message
       })
       .then(response => {
-       
-        console.log(this.chats)
+        console.log(this.chats);
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       });
   }
 
-  deleteChat(id){
+  deleteChat(id) {
     this.setState(prevState => ({
-      chats : prevState.chats.filter(chat => chat.id !== id)
-    }))
-    request.delete(`chats/${id}`)
-    .then(response =>{
-      console.log(response);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      chats: prevState.chats.filter(chat => chat._id !== id)
+    }));
+    request
+      .delete(`chats/${id}`)
+      .then(response => {
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -75,9 +80,12 @@ class ChatBox extends Component {
             <div className="title">React Chat</div>
           </div>
           <ul className="messages">
-            <ChatList chatData={[...this.state.chats]} delete={this.deleteChat}/>
+            <ChatList
+              chatData={[...this.state.chats]}
+              delete={this.deleteChat}
+            />
           </ul>
-          <ChatForm addChat = {this.sendChat}/>
+          <ChatForm addChat={this.sendChat} />
         </div>
       </div>
     );

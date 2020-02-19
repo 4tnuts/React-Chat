@@ -23,6 +23,7 @@ module.exports = (db, ObjectId) => {
     })
 
     router.delete('/:id', (req, res, next) => {
+        console.log(req.params.id);
         collection.findOneAndDelete({_id : ObjectId(req.params.id)}, (err,result)=>{
             if(err) throw err;
             res.status(200).json(result);
