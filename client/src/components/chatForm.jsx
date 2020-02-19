@@ -12,12 +12,10 @@ class ChatForm extends Component {
 
   handleChangeName(event) {
     this.setState({name: event.target.value});
-    console.log(this.state.name)
   }
 
   handleChangeMessage(event) {
     this.setState({message: event.target.value});
-    console.log(this.state.message)
   }
 
   handleSubmit(event) {

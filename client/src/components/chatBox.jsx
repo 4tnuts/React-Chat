@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import ChatForm from "./chatForm";
 import ChatList from "./chatList";
 import axios from "axios";
+import io from "socket.io-client";
 
 const request = axios.create({
   baseURL: "http://localhost:4000/api/",
   timeout: 1000,
   headers: { "X-Custom-Header": "foobar" }
 });
+
+const socket = io("http://localhost:4000");
 
 class ChatBox extends Component {
   constructor(props) {
@@ -20,17 +23,18 @@ class ChatBox extends Component {
 
   componentDidMount() {
     this.loadChat();
+    socket.on("loadChat", data => {
+      this.loadChat();
+    });
   }
 
   loadChat() {
     request
       .get("chats")
       .then(response => {
-        console.log("INI RESPONSE LOAD CHAT CHATBOX",response.data)
         this.setState({
           chats: response.data
         });
-        console.log("INI ISI YANG ADA DI STATE",this.state.chats);
       })
       .catch(err => {
         console.log("error : ", err);
@@ -47,7 +51,7 @@ class ChatBox extends Component {
         message: dataChat.message
       })
       .then(response => {
-        console.log(this.chats);
+        socket.emit("sendChat", null);
       })
       .catch(err => {
         console.log(err);
@@ -60,8 +64,7 @@ class ChatBox extends Component {
     }));
     request
       .delete(`chats/${id}`)
-      .then(response => {
-      })
+      .then(response => {})
       .catch(err => {
         console.log(err);
       });

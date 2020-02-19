@@ -1,7 +1,5 @@
 const express = require('express');
 const path = require('path');
-const http = require('http');
-const io = require('socket.io')(http)
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const MongoClient = require('mongodb').MongoClient;
